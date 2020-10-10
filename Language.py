@@ -2,7 +2,7 @@ from abc import ABC, abstractmethod
 
 class Language(ABC):
 
-    '''Abstract Methods'''
+    '''Abstract Methods Mandatory for all Languages'''
 
     @abstractmethod
     def loop(self):
@@ -24,7 +24,7 @@ class Language(ABC):
         pass
 
 
-    ''' Methods for Static Languages '''
+    ''' Optional Methods'''
 
     def declare(self,name,vartype,container='var'):
         return "not_supported"
