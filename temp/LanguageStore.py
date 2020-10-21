@@ -33,6 +33,8 @@ class PHP(Language):
     def read(self,name,vartype):
         if vartype=='int':
             return f'${name} = (int)trim(fgets(STDIN));'
+        if vartype=='string':
+            return f'${name}=trim(fgets(STDIN));'    
     def headers(self,code):
         return f''' <?php \n {code} ?> '''
     def function(self,name,return_type,inner_code):
