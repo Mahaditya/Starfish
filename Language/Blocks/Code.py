@@ -1,4 +1,4 @@
-from Block import Block
+from .Block import Block
 
 class Code(Block):
     def __init__(self,inner_code):

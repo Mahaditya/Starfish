@@ -1,4 +1,4 @@
-from Block import Block
+from .Block import Block
 
 class Class(Block):
     def __init__(self,name,inner_code,access_specifier='public'):

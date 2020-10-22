@@ -1,8 +1,15 @@
-from Language.Selector import Language
-Language.name="python3"
-from Language.Blocks.Algorithms.ReadVar import ReadVar as read
+from Language.Selector import select_language
+from Language.Blocks.Algorithms.ReadVar import ReadVar
+from Language.Blocks.Function import Function as function
+from Language.Blocks.Loop import For as loop
+select_language("cpp")
 
-read("N","int")
+func=function("main","int",[
+    ReadVar("count","int"),
+    loop('1','N','1',[
+        ReadVar("count","int"),
+        ReadVar("N","int"),
+    ])
+])
 
-
-
+print(func)

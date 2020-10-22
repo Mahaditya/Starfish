@@ -1,4 +1,4 @@
-from Algorithm import Algorithm
+from .Algorithm import Algorithm
 class ReadVar(Algorithm):
     def __init__(self,name,vartype):
         self.name=name

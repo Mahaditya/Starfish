@@ -1,5 +1,5 @@
-from Block import Block
-
+from .Block import Block
+from .Algorithms.CreateLoop import CreateLoop
 class For(Block):
     def __init__(self,start,end,step,inner_code):
         self.start=start
@@ -7,4 +7,4 @@ class For(Block):
         self.step=step
         self.inner_code=inner_code
     def create(self):
-        return self.language.loop(self.start,self.end,self.step,self.inner_code)
+        return CreateLoop(self.start,self.end,self.step,self.inner_code).create()

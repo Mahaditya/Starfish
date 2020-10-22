@@ -1,7 +1,7 @@
-from Blocks.Block import Block
-from Algorithms.Algorithm import Algorithm
-class Language:
-    name = 'python3'
-    Block.language=name
-    Algorithm.language=name
+from .Blocks.Block import Block
+from .Blocks.Algorithms.Algorithm import Algorithm
 
+def select_language(language):
+    Block.language=language
+    Algorithm.language=language
+    
