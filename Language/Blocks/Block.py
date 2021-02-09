@@ -2,36 +2,53 @@ from abc import ABC, abstractmethod
 
 class Block(ABC):
     language='python3'
+    block_start="{"
+    block_end="}"
+
+    block_starts={
+            "python3":":",
+            "cpp":"{",
+            "php":"{",
+            "python2":":",
+            "java":"{",
+            "csharp":"{",
+            'golang':"{",
+            "javascript":"{",
+            "C":"{",
+            "ruby":"",
+    }
+
+    block_ends={
+            "python3":"",
+            "cpp":"}",
+            "php":"}",
+            "python2":"",
+            "java":"}",
+            "csharp":"}",
+            'golang':"}",
+            "javascript":"}",
+            "C":"}",
+            "ruby":"end",
+    }
 
     def __repr__(self):
-        return self.compileNew(self,self)
+        return self.compile(self,self)
 
     @staticmethod
-    def compile(self,code_block,depth=1):
-        statements=""
-        spacing = '\t'*depth
-        for statement in code_block.inner_code:
-            if statement=="not_supported" :
-                continue
-            elif isinstance(statement,Block):
-                statements=statements+'\n'+spacing+self.compile(self,statement,depth+1)
-            else:
-                statements=statements+'\n'+spacing+statement
-        code_block.inner_code=statements
-        return code_block.create()
-
-    @staticmethod
-    def compileNew(self,code_block,depth=1):
+    def compile(self,code_block,depth=0):
         statements=""
         spacing = '\t'*depth
         for statement in code_block.inner_code:
             if isinstance(statement,Block):
-                statements=statements+'\n'+spacing+self.compileNew(self,statement,depth+1)
+                statements=statements+'\n'+spacing+self.compile(self,statement,depth+1)
             elif statement.create()=="not_implemented" :
                 continue
             else:
                 statements=statements+'\n'+spacing+statement.create()
-        code_block.inner_code=statements
+        if depth==0:
+            code_block.inner_code=statements 
+        else: 
+            code_block.inner_code = self.block_starts[self.language]+f'{statements}'+'\n'+'\t'*(depth-1)+self.block_ends[self.language]
         return code_block.create()
 
     @abstractmethod
